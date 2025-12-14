@@ -8,6 +8,7 @@ import { ExportButtonsProps } from "@/types";
 export default function ExportButtons({ subjects, gwa, totalUnits }: ExportButtonsProps) {
   const [showTextModal, setShowTextModal] = useState(false);
   const [exportText, setExportText] = useState("");
+  const [showToast, setShowToast] = useState(false);
 
   // Generate formatted text for export
   const generateExportText = () => {
@@ -39,7 +40,8 @@ export default function ExportButtons({ subjects, gwa, totalUnits }: ExportButto
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(exportText);
-      alert("Copied to clipboard!");
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 2000);
     } catch (err) {
       console.error("Failed to copy:", err);
     }
@@ -94,18 +96,20 @@ export default function ExportButtons({ subjects, gwa, totalUnits }: ExportButto
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={handleTextExport}
-          className="flex-1 px-4 py-2 md:px-6 md:py-3 text-sm md:text-base bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium shadow-sm"
+          className="flex-1 px-4 py-2 md:px-6 md:py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium shadow-sm flex items-center justify-center gap-2"
         >
-          📄 Export as Text
+          <img src="/images/text.png" alt="Text" className="w-4 h-4 md:w-5 md:h-5" />
+          <span className="text-xs md:text-sm">Export as Text</span>
         </motion.button>
 
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={handleScreenshotExport}
-          className="flex-1 px-4 py-2 md:px-6 md:py-3 text-sm md:text-base bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-medium shadow-sm"
+          className="flex-1 px-4 py-2 md:px-6 md:py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-medium shadow-sm flex items-center justify-center gap-2"
         >
-          📸 Export as Screenshot
+          <img src="/images/screenshot.png" alt="Screenshot" className="w-4 h-4 md:w-5 md:h-5" />
+          <span className="text-xs md:text-sm">Export as Screenshot</span>
         </motion.button>
       </div>
 
@@ -124,13 +128,13 @@ export default function ExportButtons({ subjects, gwa, totalUnits }: ExportButto
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white border border-gray-200 rounded-xl shadow-2xl p-4 md:p-6 max-w-md w-full"
+              className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-2xl p-4 md:p-6 max-w-md w-full"
             >
-              <h3 className="text-xl md:text-2xl font-bold mb-4 text-gray-900">
+              <h3 className="text-xl md:text-2xl font-bold mb-4 text-gray-900 dark:text-white">
                 Export as Text
               </h3>
 
-              <pre className="bg-gray-50 border border-gray-200 p-3 md:p-4 rounded-lg mb-4 text-xs md:text-sm overflow-auto max-h-64 whitespace-pre-wrap text-gray-800">
+              <pre className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-3 md:p-4 rounded-lg mb-4 text-xs md:text-sm overflow-auto max-h-64 whitespace-pre-wrap text-gray-800 dark:text-gray-200">
                 {exportText}
               </pre>
 
@@ -155,6 +159,20 @@ export default function ExportButtons({ subjects, gwa, totalUnits }: ExportButto
                 </button>
               </div>
             </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Toast Notification */}
+      <AnimatePresence>
+        {showToast && (
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            className="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 px-4 py-2 rounded-lg shadow-lg z-50 text-sm font-medium"
+          >
+            Copied!
           </motion.div>
         )}
       </AnimatePresence>

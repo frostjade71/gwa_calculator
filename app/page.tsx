@@ -96,10 +96,10 @@ export default function Home() {
   }, [subjects]);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-950 transition-colors">
       <Header />
       
-      <main className="flex-1 py-6 md:py-10 px-3 md:px-4 bg-gray-50">
+      <main className="flex-1 py-6 md:py-10 px-3 md:px-4 bg-gray-50 dark:bg-gray-950 transition-colors">
         <div className="max-w-5xl mx-auto">
           {/* Page Title */}
           <motion.div
@@ -107,10 +107,10 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-6 md:mb-8"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">
               Calculate Your GWA
             </h2>
-            <p className="text-sm md:text-base text-gray-600">
+            <p className="text-sm md:text-base text-gray-600 dark:text-gray-400">
               Add your subjects below and see your General Weighted Average in real-time
             </p>
           </motion.div>
@@ -123,17 +123,17 @@ export default function Home() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 }}
-                className="bg-white rounded-lg md:rounded-xl shadow-sm border border-gray-200 p-4 md:p-6"
+                className="bg-white dark:bg-gray-900 rounded-lg md:rounded-xl shadow-sm border border-gray-700 dark:border-gray-700 p-4 md:p-6 transition-colors"
               >
                 <div className="flex justify-between items-center mb-4 md:mb-6">
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900">
+                  <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white">
                     Your Subjects
                   </h3>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={addSubject}
-                    className="px-3 py-1.5 md:px-4 md:py-2 bg-blue-600 text-white text-sm md:text-base rounded-lg hover:bg-blue-700 transition-colors font-medium shadow-sm"
+                    className="px-3 py-1.5 md:px-4 md:py-2 bg-blue-600 dark:bg-blue-500 text-white text-sm md:text-base rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors font-medium shadow-sm"
                   >
                     + Add Subject
                   </motion.button>
@@ -147,7 +147,7 @@ export default function Home() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="text-center py-8 md:py-12 text-gray-500"
+                        className="text-center py-8 md:py-12 text-gray-500 dark:text-gray-400"
                       >
                         <p className="text-base md:text-lg">No subjects added yet.</p>
                         <p className="text-xs md:text-sm mt-2">

@@ -16,12 +16,12 @@ export default function SubjectRow({ subject, onUpdate, onRemove }: SubjectRowPr
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, x: -100 }}
       transition={{ duration: 0.3 }}
-      className="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-3 md:p-4 mb-2 md:mb-3"
+      className="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-3 md:p-4 mb-2 md:mb-3 transition-colors"
     >
       <div className="grid grid-cols-12 gap-2 md:gap-3">
         {/* Subject Name */}
         <div className="col-span-12 md:col-span-5">
-          <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Subject Name
           </label>
           <input
@@ -29,13 +29,13 @@ export default function SubjectRow({ subject, onUpdate, onRemove }: SubjectRowPr
             value={subject.name}
             onChange={(e) => onUpdate(subject.id, "name", e.target.value)}
             placeholder="e.g., Mathematics"
-            className="w-full px-2 md:px-3 py-1.5 md:py-2 text-sm md:text-base bg-white border border-gray-300 text-gray-900 placeholder-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+            className="w-full px-2 md:px-3 py-1.5 md:py-2 text-sm md:text-base bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
           />
         </div>
 
         {/* Grade */}
         <div className="col-span-5 md:col-span-3">
-          <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Grade
           </label>
           <input
@@ -44,8 +44,8 @@ export default function SubjectRow({ subject, onUpdate, onRemove }: SubjectRowPr
             value={subject.grade}
             onChange={(e) => onUpdate(subject.id, "grade", e.target.value)}
             placeholder="1.0"
-            className={`w-full px-2 md:px-3 py-1.5 md:py-2 text-sm md:text-base bg-white border text-gray-900 placeholder-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
-              gradeError ? "border-red-500" : "border-gray-300"
+            className={`w-full px-2 md:px-3 py-1.5 md:py-2 text-sm md:text-base bg-white dark:bg-gray-900 border text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+              gradeError ? "border-red-500" : "border-gray-300 dark:border-gray-600"
             }`}
           />
           {gradeError && (
@@ -55,7 +55,7 @@ export default function SubjectRow({ subject, onUpdate, onRemove }: SubjectRowPr
 
         {/* Units */}
         <div className="col-span-5 md:col-span-2">
-          <label className="block text-xs md:text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-xs md:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Units
           </label>
           <input
@@ -64,8 +64,8 @@ export default function SubjectRow({ subject, onUpdate, onRemove }: SubjectRowPr
             value={subject.units}
             onChange={(e) => onUpdate(subject.id, "units", e.target.value)}
             placeholder="3"
-            className={`w-full px-2 md:px-3 py-1.5 md:py-2 text-sm md:text-base bg-white border text-gray-900 placeholder-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
-              unitsError ? "border-red-500" : "border-gray-300"
+            className={`w-full px-2 md:px-3 py-1.5 md:py-2 text-sm md:text-base bg-white dark:bg-gray-900 border text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+              unitsError ? "border-red-500" : "border-gray-300 dark:border-gray-600"
             }`}
           />
           {unitsError && (
