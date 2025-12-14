@@ -66,10 +66,38 @@ export default function ExportButtons({ subjects, gwa, totalUnits }: ExportButto
     if (!element) return;
 
     try {
+      // Temporarily remove blur and overlay if present
+      const contentDiv = element.querySelector('.text-center');
+      const overlay = element.querySelector('.absolute.inset-0');
+      const originalContentClass = contentDiv?.className;
+      const wasOverlayHidden = overlay ? (overlay as HTMLElement).style.display === 'none' : true;
+      
+      // Remove blur effect temporarily
+      if (contentDiv) {
+        contentDiv.className = contentDiv.className.replace('blur-md', '').replace('select-none', '');
+      }
+      
+      // Hide the overlay button temporarily
+      if (overlay) {
+        (overlay as HTMLElement).style.display = 'none';
+      }
+
       const canvas = await html2canvas(element, {
         backgroundColor: null,
-        scale: 2,
+        scale: 3, // Increased scale for better quality
+        useCORS: true,
+        logging: false,
+        windowWidth: element.scrollWidth,
+        windowHeight: element.scrollHeight,
       });
+
+      // Restore original state
+      if (contentDiv && originalContentClass) {
+        contentDiv.className = originalContentClass;
+      }
+      if (overlay && !wasOverlayHidden) {
+        (overlay as HTMLElement).style.display = '';
+      }
 
       canvas.toBlob((blob) => {
         if (blob) {

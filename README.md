@@ -7,13 +7,13 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue.svg)](https://www.typescriptlang.org/)
 [![GitHub Stars](https://img.shields.io/github/stars/frostjade71/gwa_calculator?style=social)](https://github.com/frostjade71/gwa_calculator)
 
-Built for lazy students like me who'd rather click buttons than do math at 2 AM.
+Built for lazy students
 
 </div>
 
 ## Project Overview
 
-The GWA Calculator helps college students easily track and calculate their General Weighted Average. Built for HCCCI College students and students everywhere, you can quickly calculate your grades for one semester or track your overall academic performance—all from your phone or computer. Your data stays private and secure since everything is saved directly in your browser, with no need for accounts or cloud storage.
+The GWA Calculator helps college students easily track and calculate their General Weighted Average. Built for HCCCI College students and students everywhere, you can quickly calculate your grades for one semester or track your overall academic performance from your phone or computer. Your data stays private and secure since everything is saved directly in your browser, with no need for accounts or cloud storage.
 
 > **Note**: This is a client-side only application - no data is ever sent to any server. Your academic information stays completely private on your device.
 
@@ -24,16 +24,9 @@ The GWA Calculator helps college students easily track and calculate their Gener
 - **Dynamic Subject Management** - Add and remove subjects with ease
 - **Live GWA Calculation** - Automatic recalculation as you type
 - **Smart Validation** - Grade range (1.0-5.0) and units (≥1) validation
+- **Show/Hide Results** - Toggle GWA results visibility with blur effect
 - **Auto-Save** - localStorage persistence across sessions
 - **Export Options** - Download as text file or screenshot (PNG)
-
-### User Experience
-
-- **Smooth Animations** - Framer Motion for delightful interactions
-- **Responsive Design** - Mobile-first, works perfectly on all devices
-- **Clean Interface** - Minimalist white design for distraction-free use
-- **Fast & Lightweight** - Client-side only, no backend required
-- **100% Privacy** - No tracking, no analytics, no data collection
 
 ## Quick Start
 
@@ -96,9 +89,13 @@ docker-compose -f docker-compose.dev.yml up
 
 **Jaderby Peñaranda**
 
-[![Website](https://img.shields.io/badge/🌏-jaderbypenaranda.link-1e88e5)](https://jaderbypenaranda.link/) [![Email](https://img.shields.io/badge/📩-Contact-4caf50)](mailto:jaderbypenaranda@gmail.com)
+[![Website](https://img.shields.io/badge/🌏-jaderbypenaranda.link-1e88e5)](https://gravatar.com/jaderbypenaranda) [![Email](https://img.shields.io/badge/📩-Contact-4caf50)](mailto:jaderbypenaranda@gmail.com)
 
 ---
 
 **Version**: 1.0.0  
 **Last Updated**: December 14, 2025
+
+## 🚀 Next Update
+
+For upcoming features, check out [What's Next.md](What's%20Next.md).

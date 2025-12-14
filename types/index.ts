@@ -14,6 +14,8 @@ export interface SubjectRowProps {
 export interface GwaResultProps {
   gwa: number;
   totalUnits: number;
+  isHidden?: boolean;
+  onShow?: () => void;
 }
 
 export interface ExportButtonsProps {

@@ -12,6 +12,7 @@ import { Subject } from "@/types";
 export default function Home() {
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [mounted, setMounted] = useState(false);
+  const [isResultsVisible, setIsResultsVisible] = useState(false);
 
   // Load subjects from localStorage on mount
   useEffect(() => {
@@ -123,17 +124,17 @@ export default function Home() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 }}
-                className="bg-white dark:bg-gray-900 rounded-lg md:rounded-xl shadow-sm border border-gray-700 dark:border-gray-700 p-4 md:p-6 transition-colors"
+                className="bg-white dark:bg-gray-900 rounded-lg md:rounded-xl shadow-sm border border-gray-700 dark:border-gray-700 p-3 md:p-6 transition-colors"
               >
-                <div className="flex justify-between items-center mb-4 md:mb-6">
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white">
+                <div className="flex justify-between items-center mb-3 md:mb-6">
+                  <h3 className="text-base md:text-xl font-bold text-gray-900 dark:text-white">
                     Your Subjects
                   </h3>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={addSubject}
-                    className="px-3 py-1.5 md:px-4 md:py-2 bg-blue-600 dark:bg-blue-500 text-white text-sm md:text-base rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors font-medium shadow-sm"
+                    className="px-2.5 py-1.5 md:px-4 md:py-2 bg-blue-600 dark:bg-blue-500 text-white text-xs md:text-base rounded-md md:rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors font-medium shadow-sm"
                   >
                     + Add Subject
                   </motion.button>
@@ -176,9 +177,37 @@ export default function Home() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                <GwaResult gwa={gwa} totalUnits={totalUnits} />
+                <GwaResult 
+                  gwa={gwa} 
+                  totalUnits={totalUnits} 
+                  isHidden={!isResultsVisible}
+                  onShow={() => setIsResultsVisible(true)}
+                />
                 
-                {subjects.length > 0 && (
+                {/* Toggle Button Below Results */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                  className="mt-4"
+                >
+                  {isResultsVisible ? (
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => setIsResultsVisible(false)}
+                      className="w-full px-3 py-2 md:px-4 md:py-3 bg-blue-600 dark:bg-blue-500 text-white text-sm md:text-base rounded-md md:rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors font-medium shadow-sm"
+                    >
+                      Hide
+                    </motion.button>
+                  ) : (
+                    <div className="w-full px-3 py-2 md:px-4 md:py-3 bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 text-xs md:text-base rounded-md md:rounded-lg font-medium text-center cursor-not-allowed">
+                      Fill in first, and let&apos;s see if you survived this semester!
+                    </div>
+                  )}
+                </motion.div>
+                
+                {subjects.length > 0 && isResultsVisible && (
                   <ExportButtons
                     subjects={subjects}
                     gwa={gwa}
